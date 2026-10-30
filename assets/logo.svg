@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#f6f8fa"/>
+      <stop offset="0.42" stop-color="#b4bcc4"/>
+      <stop offset="0.52" stop-color="#6a737c"/>
+      <stop offset="0.72" stop-color="#a1aab3"/>
+      <stop offset="1" stop-color="#e4e8ec"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffa45c"/>
+      <stop offset="0.5" stop-color="#ff7a1a"/>
+      <stop offset="1" stop-color="#e0600a"/>
+    </linearGradient>
+    <radialGradient id="hub" cx="0.5" cy="0.38" r="0.62">
+      <stop offset="0" stop-color="#262b31"/>
+      <stop offset="1" stop-color="#14171b"/>
+    </radialGradient>
+  </defs>
+  <!-- Neumático con dibujo -->
+  <circle cx="32" cy="32" r="31" fill="#121417"/>
+  <circle cx="32" cy="32" r="28.2" fill="none" stroke="#2c3238" stroke-width="4.6" stroke-dasharray="5.2 3.66"/>
+  <circle cx="32" cy="32" r="24.6" fill="#0b0d0f"/>
+  <!-- Llanta cromada -->
+  <circle cx="32" cy="32" r="22.4" fill="url(#chrome)"/>
+  <circle cx="32" cy="32" r="19.4" fill="url(#hub)"/>
+  <!-- M -->
+  <path transform="translate(32 32) scale(1.08) translate(-32 -32)" fill="url(#orange)" d="M21.6 41V23h5.1L32 32.2 37.3 23h5.1v18h-4.7V31.2l-4.1 7h-3.2l-4.1-7V41z"/>
+</svg>

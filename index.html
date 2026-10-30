@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="meta.title">Haytam Ayadin — Desarrollador Full Stack · Java, Spring Boot y React</title>
+  <meta name="description" data-i18n-attr="content:meta.desc" content="Portfolio de Haytam Ayadin Haltout, desarrollador full stack en Madrid especializado en Java, Spring Boot y React. Experiencia, proyectos con IA y contacto.">
+  <meta name="author" content="Haytam Ayadin Haltout">
+  <meta name="theme-color" content="#0b0b0e">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haytam Ayadin — Full Stack Developer">
+  <meta property="og:description" data-i18n-attr="content:meta.desc" content="Portfolio de Haytam Ayadin Haltout, desarrollador full stack en Madrid especializado en Java, Spring Boot y React. Experiencia, proyectos con IA y contacto.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500..800&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    /* Early boot: pick the language before anything paints and keep a failsafe
+       that reveals the content if the scripts never finish starting. */
+    (function () {
+      var d = document.documentElement, l = 'es';
+      d.className = d.className.replace('no-js', 'js');
+      try {
+        var q = new URLSearchParams(location.search).get('lang'), s = localStorage.getItem('ha-lang');
+        l = (q === 'en' || q === 'es') ? q : (s === 'en' || s === 'es') ? s
+          : ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+      } catch (e) {}
+      d.setAttribute('data-lang', l);
+      setTimeout(function () {
+        if (!d.classList.contains('is-ready')) d.className = d.className.replace(/\bjs\b/, 'no-js');
+      }, 6000);
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Haytam Ayadin Haltout",
+    "jobTitle": "Full Stack Developer",
+    "email": "mailto:haytam25contact@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Alcalá de Henares", "addressRegion": "Madrid", "addressCountry": "ES" },
+    "knowsAbout": ["Java", "Spring Boot", "React", "JavaScript", "Docker", "PostgreSQL", "REST APIs", "Google Gemini API"],
+    "knowsLanguage": ["es", "ar", "en"],
+    "sameAs": ["https://www.linkedin.com/in/haytam-ayadin-haltout-0a3384253/", "https://github.com/haytam-25"]
+  }
+  </script>
+
+  <script defer src="js/vendor/lenis.min.js"></script>
+  <script defer src="js/vendor/matter.min.js"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/ascii-field.js"></script>
+  <script defer src="js/visuals.js"></script>
+  <script defer src="js/stack-physics.js"></script>
+  <script defer src="js/terminal.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+  <!-- ============================== Preloader ============================== -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__cols"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="loader__inner">
+      <div class="loader__top mono"><span>Haytam Ayadin Haltout</span><span>Portfolio ©2026</span></div>
+      <div class="loader__count"><span class="js-count">000</span><span class="loader__pct">%</span></div>
+      <div class="loader__bottom">
+        <div class="loader__bar"><i></i></div>
+        <p class="loader__msg mono"><span class="loader__caret">&gt;</span> <span class="js-loader-msg">cargando tipografías</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== Chrome ============================== -->
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring"><i></i></div>
+    <div class="cursor__dot"><i></i></div>
+  </div>
+  <div class="cursor-badge" aria-hidden="true"><span class="cursor-badge__disc"><span class="cursor-badge__label"></span></span></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top" data-magnetic="0.3" aria-label="Haytam Ayadin — inicio" data-i18n-attr="aria-label:nav.home">
+      <span class="nav__logo-mark">H<span class="nav__logo-dot"></span>A</span>
+      <span class="nav__logo-name">Haytam Ayadin</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.label">
+      <a class="nav__link" href="#about"><sup>01</sup><span data-i18n="nav.about" data-fx="scramble">Sobre mí</span></a>
+      <a class="nav__link" href="#journey"><sup>02</sup><span data-i18n="nav.journey" data-fx="scramble">Trayectoria</span></a>
+      <a class="nav__link" href="#work"><sup>03</sup><span data-i18n="nav.work" data-fx="scramble">Proyectos</span></a>
+      <a class="nav__link" href="#stack"><sup>04</sup><span data-i18n="nav.stack" data-fx="scramble">Stack</span></a>
+      <a class="nav__link" href="#contact"><sup>05</sup><span data-i18n="nav.contact" data-fx="scramble">Contacto</span></a>
+    </nav>
+
+    <div class="nav__end">
+      <p class="nav__status mono"><span class="pulse" aria-hidden="true"></span><span data-i18n="nav.status" data-fx="scramble">Disponible</span></p>
+      <div class="lang" role="group" aria-label="Cambiar idioma" data-i18n-attr="aria-label:lang.label">
+        <span class="lang__pill" aria-hidden="true"></span>
+        <button class="lang__btn" type="button" data-lang="es" aria-pressed="true" lang="es" title="Español">ES</button>
+        <button class="lang__btn" type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Menú" data-i18n-attr="aria-label:nav.label">
+      <a href="#about"><span class="menu__num">01</span><span data-i18n="nav.about">Sobre mí</span></a>
+      <a href="#journey"><span class="menu__num">02</span><span data-i18n="nav.journey">Trayectoria</span></a>
+      <a href="#work"><span class="menu__num">03</span><span data-i18n="nav.work">Proyectos</span></a>
+      <a href="#stack"><span class="menu__num">04</span><span data-i18n="nav.stack">Stack</span></a>
+      <a href="#contact"><span class="menu__num">05</span><span data-i18n="nav.contact">Contacto</span></a>
+    </nav>
+    <div class="menu__foot mono">
+      <a href="mailto:haytam25contact@gmail.com">haytam25contact@gmail.com</a>
+      <div class="menu__social">
+        <a href="https://www.linkedin.com/in/haytam-ayadin-haltout-0a3384253/" target="_blank" rel="noopener">LinkedIn <i class="i i--ne" aria-hidden="true"></i></a>
+        <a href="https://github.com/haytam-25" target="_blank" rel="noopener">GitHub <i class="i i--ne" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============================== Hero ============================== -->
+    <section class="hero" id="top" data-theme="dark">
+      <canvas class="hero__field" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__meta mono">
+          <p class="hero__eyebrow"><span class="hero__tick" aria-hidden="true"></span>Portfolio — 2026</p>
+          <p class="hero__loc"><span class="hero__tick" aria-hidden="true"></span> </p>
+          <p class="hero__loc">Alcalá de Henares, Madrid<br><span data-i18n="hero.time">Hora local</span> <time class="js-clock">--:--:--</time></p>
+        </div>
+
+        <h1 class="hero__name" aria-label="Haytam Ayadin">
+          <span class="hero__row hero__row--1" aria-hidden="true">
+            <span class="hero__word" data-chars>HAYTAM</span>
+            <span class="hero__stack mono"><span data-i18n="hero.stackK">— Stack</span><span>Java</span><span>Spring Boot</span><span>React</span></span>
+          </span>
+          <span class="hero__row hero__row--2" aria-hidden="true">
+            <span class="hero__role" data-i18n="hero.role">Desarrollador <br>Full Stack</span>
+            <span class="hero__w2"><span class="hero__word hero__word--serif" data-chars>Ayadin</span><svg class="hero__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg></span>
+          </span>
+        </h1>
+
+        <div class="hero__foot">
+          <p class="hero__tagline">
+            <span data-i18n="hero.tagA">Desarrollador de </span>
+            <span class="rotator"><span class="rotator__w is-on">aplicaciones web</span></span>
+            <span data-i18n="hero.tagB">de principio a fin.</span>
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--solid" href="#work" data-magnetic>
+              <span class="btn__label"><span data-i18n="hero.ctaWork">Ver proyectos</span><span aria-hidden="true" data-i18n="hero.ctaWork">Ver proyectos</span></span>
+              <span class="btn__icon" aria-hidden="true"><i class="i i--r"></i></span>
+            </a>
+            <a class="btn btn--ghost" href="#contact" data-magnetic>
+              <span class="btn__label"><span data-i18n="hero.ctaCv">Contacto</span><span aria-hidden="true" data-i18n="hero.ctaCv">Contacto</span></span>
+              <span class="btn__icon" aria-hidden="true"><i class="i i--down"></i></span>
+            </a>
+          </div>
+          <a class="hero__scroll mono" href="#about"><span data-i18n="hero.scroll">Desliza</span><i aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Bands ============================== -->
+    <div class="bands" aria-hidden="true">
+      <div class="band band--b" data-band data-dir="-1" data-words="bands.words"><div class="band__track"></div></div>
+      <div class="band band--a" data-band data-dir="1" data-list="Java|Spring Boot|React|Docker|PostgreSQL|Google Gemini|REST API|Vue.js|Tailwind CSS|Linux|Git"><div class="band__track"></div></div>
+    </div>
+
+    <!-- ============================== About ============================== -->
+    <section class="about section" id="about" data-theme="light">
+      <div class="container">
+        <header class="sec-head">
+          <h2 class="sec-label"><span class="sec-label__num">(01)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="about.label" data-fx="scramble">Sobre mí</span></h2>
+          <span class="sec-cmd">whoami</span>
+        </header>
+
+        <p class="statement" data-i18n="about.statement" data-scrub>Haytam, desarrollador <em>full stack</em>. Aplicaciones completas con <em>Java, Spring Boot y React</em> — de la API REST a la interfaz — ademas de despliegues, CI/CD, integracion de <em>IA generativa</em> en aplicaciones web.</p>
+
+        <div class="about__grid">
+          <p class="about__text" data-reveal data-i18n="about.text">Actualmente curso el Grado Superior en Desarrollo de Aplicaciones Web (fin previsto: junio de 2027). <strong>Abierto a prácticas</strong></p>
+          <ul class="stats">
+            <li class="stat" data-reveal style="--d:0ms"><span class="stat__num" data-count="1" data-pad="2">01</span><span class="stat__label" data-i18n="about.s1">App con IA en producción</span></li>
+            <li class="stat" data-reveal style="--d:90ms"><span class="stat__num" data-count="20" data-suffix="+">20+</span><span class="stat__label" data-i18n="about.s2">Tecnologías en mi stack</span></li>
+            <li class="stat" data-reveal style="--d:180ms"><span class="stat__num" data-count="3" data-pad="2">03</span><span class="stat__label" data-i18n="about.s3">Idiomas: español, árabe e inglés</span></li>
+            <li class="stat" data-reveal style="--d:270ms"><span class="stat__num" data-count="2027" data-from="2000">2027</span><span class="stat__label" data-i18n="about.s4">Fin previsto del grado DAW</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Journey (git log) ============================== -->
+    <section class="journey section" id="journey" data-theme="light">
+      <div class="container">
+        <header class="sec-head">
+          <h2 class="sec-label"><span class="sec-label__num">(02)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="journey.label" data-fx="scramble">Trayectoria</span></h2>
+          <span class="sec-cmd">git log --graph</span>
+        </header>
+
+        <div class="journey__intro">
+          <p class="sec-title" data-split data-i18n="journey.title">Mi historial <em>de commits</em></p>
+          <p class="journey__sub" data-reveal data-i18n="journey.sub">Experiencia y formación en orden de commit: lo más reciente, arriba.</p>
+        </div>
+
+        <div class="gitlog">
+          <svg class="gitlog__svg" aria-hidden="true">
+            <path class="gitlog__track gitlog__track--main"></path>
+            <path class="gitlog__track gitlog__track--branch"></path>
+            <path class="gitlog__draw gitlog__draw--main"></path>
+            <path class="gitlog__draw gitlog__draw--branch"></path>
+          </svg>
+
+          <ol class="gitlog__list">
+            <li class="commit commit--head" data-lane="0">
+              <span class="commit__node" aria-hidden="true"></span>
+              <div class="commit__meta mono">
+                <span class="commit__hash">e7c1a90</span>
+                <span class="ref ref--head">HEAD -&gt; main</span>
+                <time data-i18n="c0.date">Ahora</time>
+              </div>
+              <div class="commit__body">
+                <p class="commit__msg mono" data-i18n="c0.msg">feat: abierto a nuevas oportunidades</p>
+                <h3 class="commit__title" data-i18n="c0.title"><em>Próximo reto</em></h3>
+                <p class="commit__org" data-i18n="c0.org">Disponible para prácticas · Abierto a traslado · Madrid</p>
+              </div>
+            </li>
+
+            <li class="commit" data-lane="1">
+              <span class="commit__node" aria-hidden="true"></span>
+              <div class="commit__meta mono">
+                <span class="commit__hash">4b8f2d1</span>
+                <span class="ref ref--branch" data-i18n="c1.ref">feature/prácticas</span>
+                <time data-i18n="c1.date">Mayo — Junio 2026</time>
+              </div>
+              <div class="commit__body">
+                <p class="commit__msg mono" data-i18n="c1.msg">feat(prácticas): gestor de horarios, turnos y bajas</p>
+                <h3 class="commit__title" data-i18n="c1.title">Desarrollador Full Stack <em>(Prácticas)</em></h3>
+                <p class="commit__org">Foro Técnico Formación</p>
+                <ul class="commit__list">
+                  <li data-i18n="c1.b1">Desarrollé una aplicación web interna para gestionar horarios, turnos y bajas del personal.</li>
+                  <li data-i18n="c1.b2">Implementé el backend con una API REST en Java y Spring Boot, y el frontend en React.js.</li>
+                </ul>
+                <ul class="tags"><li>Java</li><li>Spring Boot</li><li>React.js</li><li>REST API</li><li>Git</li></ul>
+              </div>
+            </li>
+
+            <li class="commit" data-lane="0">
+              <span class="commit__node" aria-hidden="true"></span>
+              <div class="commit__meta mono">
+                <span class="commit__hash">9d02c6f</span>
+                <span class="ref">edu/daw</span>
+                <time data-i18n="c2.date">2025 — Actualidad</time>
+              </div>
+              <div class="commit__body">
+                <p class="commit__msg mono" data-i18n="c2.msg">build: grado superior DAW en curso</p>
+                <h3 class="commit__title" data-i18n="c2.title">Técnico Superior en <em>Desarrollo de Aplicaciones Web</em></h3>
+                <p class="commit__org" data-i18n="c2.org">IES Isidra de Guzmán · Finalización prevista: junio de 2027</p>
+                <div class="degree" data-degree data-start="2025-09-15" data-end="2027-06-30">
+                  <div class="degree__head mono"><span data-i18n="c2.prog">Progreso del grado</span><span class="degree__pct js-degree-pct">0%</span></div>
+                  <div class="degree__bar"><i></i></div>
+                  <p class="degree__note mono"><span class="pulse" aria-hidden="true"></span><span data-i18n="c2.note">Disponible para prácticas</span></p>
+                </div>
+              </div>
+            </li>
+
+            <li class="commit commit--root" data-lane="0">
+              <span class="commit__node" aria-hidden="true"></span>
+              <div class="commit__meta mono">
+                <span class="commit__hash">1a3e5b7</span>
+                <span class="ref">tag: v1.0</span>
+                <time>2020 — 2022</time>
+              </div>
+              <div class="commit__body">
+                <p class="commit__msg mono" data-i18n="c3.msg">init: bachillerato de ciencias y tecnología</p>
+                <h3 class="commit__title" data-i18n="c3.title">Bachillerato de <em>Ciencias y Tecnología</em></h3>
+                <p class="commit__org" data-i18n="c3.org">IES Atenea</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Work (horizontal) ============================== -->
+    <section class="work" id="work" data-theme="dark">
+      <div class="work__pin">
+        <div class="container work__head">
+          <div class="sec-head sec-head--bare">
+            <h2 class="sec-label"><span class="sec-label__num">(03)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="work.label" data-fx="scramble">Proyectos</span></h2>
+            <span class="sec-cmd">ls ./proyectos</span>
+          </div>
+          <div class="work__titlebar">
+            <p class="sec-title" data-split data-i18n="work.title">Proyectos <em>seleccionados</em></p>
+            <div class="work__ui mono" aria-hidden="true">
+              <span class="work__count"><span class="js-work-idx">01</span> / 04</span>
+              <span class="work__bar"><i></i></span>
+              <span class="work__hint"><span data-i18n="work.hint">Desliza para explorar</span> <i class="i i--r" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work__track">
+          <!-- 01 · MecanicAI -->
+          <article class="project" style="--i:0">
+            <a class="project__visual" href="https://mecanicai.org" target="_blank" rel="noopener" data-cursor="view" aria-label="Abrir MecanicAI en una pestaña nueva" data-i18n-attr="aria-label:p1.aria">
+              <div class="project__parallax">
+                <div class="mock mock--shots" data-mock="shots">
+                  <div class="mock__bar"><span class="mock__dots"><i></i><i></i><i></i></span><span class="mock__url"><i class="i i--lock" aria-hidden="true"></i><span class="mock__host">mecanicai.org</span><span class="mock__path">/</span></span></div>
+                  <span class="shots__load" aria-hidden="true"><i></i></span>
+                  <div class="shots">
+                    <img class="shots__img is-on" src="assets/projects/mecanicai-1-1600.webp" srcset="assets/projects/mecanicai-1-900.webp 900w, assets/projects/mecanicai-1-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/" alt="MecanicAI: pantalla de inicio con acceso con Google y modo invitado" data-i18n-attr="alt:img.m1" decoding="async">
+                    <img class="shots__img" src="assets/projects/mecanicai-2-1600.webp" srcset="assets/projects/mecanicai-2-900.webp 900w, assets/projects/mecanicai-2-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/garaje" alt="MecanicAI: garaje del coche con chat con el mecánico, informe, historial y cesta" data-i18n-attr="alt:img.m2" loading="lazy" decoding="async">
+                    <img class="shots__img" src="assets/projects/mecanicai-3-1600.webp" srcset="assets/projects/mecanicai-3-900.webp 900w, assets/projects/mecanicai-3-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/cesta" alt="MecanicAI: lista de la compra con los recambios recomendados" data-i18n-attr="alt:img.m3" loading="lazy" decoding="async">
+                    <span class="shots__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="project__body">
+              <div class="project__top mono"><span class="project__idx">01</span><span data-i18n="p1.kicker">Proyecto personal · En producción</span><span class="live"><span class="pulse" aria-hidden="true"></span>Live</span></div>
+              <h3 class="project__title">MecanicAI</h3>
+              <p class="project__sub" data-i18n="p1.sub">Tu mecánico con IA</p>
+              <p class="project__desc" data-i18n="p1.desc">Aplicación web que diagnostica averías de coche a partir de la descripción del usuario. Integré la API de Google Gemini en un backend Java / Spring Boot y la desplegué en un servidor vía SSH y Git, con un contenedor por servicio usando Docker Compose, Nginx y SSL con Caddy.</p>
+              <ul class="tags"><li>React.js</li><li>Java</li><li>Spring Boot</li><li>Gemini API</li><li>Docker</li><li>REST API</li></ul>
+              <div class="project__links">
+                <a class="arrow-link" href="https://mecanicai.org" target="_blank" rel="noopener"><span data-i18n="p1.link">Visitar web</span><span class="arrow-link__icon" aria-hidden="true"><i class="i i--ne"></i></span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 · Shift manager -->
+          <article class="project" style="--i:1">
+            <div class="project__visual">
+              <div class="project__parallax">
+                <div class="mock mock--shots" data-mock="shots">
+                  <div class="mock__bar"><span class="mock__dots"><i></i><i></i><i></i></span><span class="mock__url"><span class="mock__host">intranet</span><span class="mock__path">/login</span></span></div>
+                  <span class="shots__load" aria-hidden="true"><i></i></span>
+                  <div class="shots">
+                    <img class="shots__img is-on" src="assets/projects/turnos-1-1600.webp" srcset="assets/projects/turnos-1-900.webp 900w, assets/projects/turnos-1-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/login" alt="Soporte Telefónico: pantalla de inicio de sesión" data-i18n-attr="alt:img.t1" decoding="async">
+                    <img class="shots__img" src="assets/projects/turnos-2-1600.webp" srcset="assets/projects/turnos-2-900.webp 900w, assets/projects/turnos-2-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/horario" alt="Soporte Telefónico: horario semanal de turnos del equipo" data-i18n-attr="alt:img.t2" loading="lazy" decoding="async">
+                    <img class="shots__img" src="assets/projects/turnos-3-1600.webp" srcset="assets/projects/turnos-3-900.webp 900w, assets/projects/turnos-3-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/equipo" alt="Soporte Telefónico: vista del equipo" data-i18n-attr="alt:img.t3" loading="lazy" decoding="async">
+                    <img class="shots__img" src="assets/projects/turnos-4-1600.webp" srcset="assets/projects/turnos-4-900.webp 900w, assets/projects/turnos-4-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/ausencias" alt="Soporte Telefónico: registro de ausencias y bajas" data-i18n-attr="alt:img.t4" loading="lazy" decoding="async">
+                    <span class="shots__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <div class="project__top mono"><span class="project__idx">02</span><span data-i18n="p2.kicker">Prácticas · Foro Técnico Formación</span></div>
+              <h3 class="project__title" data-i18n="p2.title">Gestor de turnos</h3>
+              <p class="project__sub" data-i18n="p2.sub">App interna «Soporte Telefónico»</p>
+              <p class="project__desc" data-i18n="p2.desc">Aplicación interna para gestionar horarios, turnos y bajas del personal. Backend con API REST en Java y Spring Boot, y frontend en React.js.</p>
+              <ul class="tags"><li>Java</li><li>Spring Boot</li><li>React.js</li><li>REST API</li><li>Git</li></ul>
+              <div class="project__links">
+                <span class="project__private mono"><i class="i i--lock" aria-hidden="true"></i><span data-i18n="p2.private">Código privado · uso interno</span></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 · 2D game -->
+          <article class="project" style="--i:2">
+            <a class="project__visual" href="https://juegohaytam.vercel.app" target="_blank" rel="noopener" data-cursor="play" aria-label="Jugar al videojuego en una pestaña nueva" data-i18n-attr="aria-label:p3.aria">
+              <div class="project__parallax">
+                <div class="mock mock--shots" data-mock="shots">
+                  <div class="mock__bar"><span class="mock__dots"><i></i><i></i><i></i></span><span class="mock__url"><i class="i i--lock" aria-hidden="true"></i><span class="mock__host">juegohaytam.vercel.app</span><span class="mock__path">/</span></span></div>
+                  <span class="shots__load" aria-hidden="true"><i></i></span>
+                  <div class="shots shots--game">
+                    <img class="shots__img is-on" src="assets/projects/juego-1-1600.webp" srcset="assets/projects/juego-1-900.webp 900w, assets/projects/juego-1-1600.webp 948w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/" alt="El Bandido: pantalla de inicio del juego" data-i18n-attr="alt:img.g1" decoding="async">
+                    <img class="shots__img" src="assets/projects/juego-2-1600.webp" srcset="assets/projects/juego-2-900.webp 900w, assets/projects/juego-2-1600.webp 948w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/" alt="El Bandido: nivel 1, plataformas y diamantes" data-i18n-attr="alt:img.g2" loading="lazy" decoding="async">
+                    <img class="shots__img" src="assets/projects/juego-3-1600.webp" srcset="assets/projects/juego-3-900.webp 900w, assets/projects/juego-3-1600.webp 948w" sizes="(min-width: 1024px) 40vw, 90vw" data-path="/" alt="El Bandido: nivel final con bolas de fuego" data-i18n-attr="alt:img.g3" loading="lazy" decoding="async">
+                    <span class="shots__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="project__body">
+              <div class="project__top mono"><span class="project__idx">03</span><span data-i18n="p3.kicker">Proyecto personal · Jugable online</span><span class="live"><span class="pulse" aria-hidden="true"></span>Live</span></div>
+              <h3 class="project__title">El Bandido</h3>
+              <p class="project__sub" data-i18n="p3.sub">Videojuego web 2D · Phaser.js + Tiled</p>
+              <p class="project__desc" data-i18n="p3.desc">Juego de plataformas para navegador que diseñé y programé con Phaser.js y Vue.js, con mapas creados en Tiled: recoge todos los diamantes y esquiva los pinchos. Está online, ¡pruébalo!</p>
+              <ul class="tags"><li>JavaScript</li><li>Phaser.js</li><li>Vue.js</li><li>Tiled</li></ul>
+              <div class="project__links">
+                <a class="arrow-link" href="https://juegohaytam.vercel.app" target="_blank" rel="noopener"><span data-i18n="p3.play">Jugar ahora</span><span class="arrow-link__icon" aria-hidden="true"><i class="i i--ne"></i></span></a>
+                <a class="arrow-link arrow-link--muted" href="https://github.com/haytam-25/JUEGOPHASER-main" target="_blank" rel="noopener"><span data-i18n="p3.code">Ver código</span><span class="arrow-link__icon" aria-hidden="true"><i class="i i--ne"></i></span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 · GitHub -->
+          <a class="project project--more" style="--i:3" href="https://github.com/haytam-25" target="_blank" rel="noopener" data-cursor="open" data-cursor-dark>
+            <span class="project__top mono"><span class="project__idx">04</span><span data-i18n="p4.kicker">Y más</span></span>
+            <span class="more__title" data-i18n="p4.title">Todo mi código, <em>en GitHub</em></span>
+            <span class="more__text" data-i18n="p4.text">Ejercicios, experimentos y todo lo que voy aprendiendo por el camino.</span>
+            <span class="more__foot">
+              <span class="more__handle mono">github.com/haytam-25</span>
+              <span class="more__cta"><span data-i18n="p4.cta">Ver perfil de GitHub</span><span class="more__arrow" aria-hidden="true"><i class="i i--ne"></i></span></span>
+            </span>
+            <span class="more__ring" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Stack ============================== -->
+    <section class="stack section" id="stack" data-theme="dark">
+      <div class="container">
+        <header class="sec-head">
+          <h2 class="sec-label"><span class="sec-label__num">(04)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="stack.label" data-fx="scramble">Stack</span></h2>
+          <span class="sec-cmd">cat stack.json</span>
+        </header>
+
+        <div class="stack__intro">
+          <p class="sec-title" data-split data-i18n="stack.title">Mi caja de <em>herramientas</em></p>
+        </div>
+
+        <div class="playground" data-cursor="drag">
+          <div class="playground__ui mono">
+            <span class="playground__hint"><span class="pulse" aria-hidden="true"></span><span class="js-play-hint" data-i18n="stack.hint">Arrastra y lanza las piezas</span></span>
+            <button class="playground__shake" type="button"><span data-i18n="stack.shake">Agitar</span> <i class="i i--refresh" aria-hidden="true"></i></button>
+          </div>
+          <div class="playground__world" aria-hidden="true">
+            <span class="pill pill--hot">Java</span>
+            <span class="pill pill--hot">Spring Boot</span>
+            <span class="pill pill--hot">React</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill pill--line">Docker</span>
+            <span class="pill">Python</span>
+            <span class="pill pill--line">PostgreSQL</span>
+            <span class="pill">SQL</span>
+            <span class="pill pill--line">Gemini API</span>
+            <span class="pill">HTML5</span>
+            <span class="pill">CSS3</span>
+            <span class="pill">Vue.js</span>
+            <span class="pill">Tailwind CSS</span>
+            <span class="pill">Phaser.js</span>
+            <span class="pill">Git</span>
+            <span class="pill">GitHub</span>
+            <span class="pill">Maven</span>
+            <span class="pill">Linux</span>
+            <span class="pill">Vercel</span>
+            <span class="pill">Railway</span>
+            <span class="pill">Nginx</span>
+            <span class="pill">Caddy</span>
+            <span class="pill pill--line">REST API</span>
+            <span class="pill">Tiled</span>
+          </div>
+        </div>
+
+        <div class="bento">
+          <article class="card card--langs" data-reveal>
+            <header class="card__head mono"><span class="card__idx">[01]</span><span data-i18n="k1.title">Lenguajes</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M17 14 7 24l10 10M31 14l10 10-10 10M27 10l-6 28"/></svg></header>
+            <ul class="card__list"><li>Java</li><li>JavaScript</li><li>Python</li><li>SQL</li><li>HTML5</li><li>CSS3</li></ul>
+          </article>
+
+          <article class="card card--fw" data-reveal style="--d:80ms">
+            <header class="card__head mono"><span class="card__idx">[02]</span><span data-i18n="k2.title">Frameworks y librerías</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 42 15 24 24 6 15z"/><path d="m6 24 18 9 18-9M6 33l18 9 18-9"/></svg></header>
+            <ul class="card__list"><li>Spring</li><li>React.js</li><li>Vue.js</li><li>Tailwind CSS</li><li>Phaser.js</li></ul>
+          </article>
+
+          <article class="card card--db" data-reveal style="--d:160ms">
+            <header class="card__head mono"><span class="card__idx">[03]</span><span data-i18n="k3.title">Bases de datos</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="11" rx="15" ry="5"/><path d="M9 11v26c0 2.8 6.7 5 15 5s15-2.2 15-5V11M9 24c0 2.8 6.7 5 15 5s15-2.2 15-5"/></svg></header>
+            <p class="card__big">PostgreSQL</p>
+            <p class="card__note mono">SQL · JPA</p>
+          </article>
+
+          <article class="card card--ops" data-reveal>
+            <header class="card__head mono"><span class="card__idx">[04]</span><span data-i18n="k4.title">Herramientas y DevOps</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="m13 19 6 5-6 5M23 30h11"/></svg></header>
+            <ul class="card__list"><li>Git</li><li>GitHub</li><li>Docker</li><li>Maven</li><li>Linux</li><li>Vercel</li><li>Railway</li><li>Nginx</li><li>Caddy</li></ul>
+          </article>
+
+          <article class="card card--speak" data-reveal style="--d:80ms">
+            <header class="card__head mono"><span class="card__idx">[05]</span><span data-i18n="k6.title">Idiomas</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v20H22l-8 7v-7H8z"/></svg></header>
+            <div class="hello" aria-hidden="true">
+              <span class="hello__w is-on" lang="es">Hola</span>
+              <span class="hello__w hello__w--ar" lang="ar" dir="rtl">مرحبا</span>
+              <span class="hello__w" lang="en">Hello</span>
+            </div>
+            <ul class="speak">
+              <li><span data-i18n="k6.es">Español</span><span class="speak__lvl mono" data-i18n="k6.native">Nativo</span></li>
+              <li><span data-i18n="k6.ar">Árabe</span><span class="speak__lvl mono" data-i18n="k6.native">Nativo</span></li>
+              <li><span data-i18n="k6.en">Inglés</span>
+                <span class="cefr mono" aria-label="B2"><i>A1</i><i>A2</i><i>B1</i><i class="is-on">B2</i><i>C1</i><i>C2</i></span></li>
+            </ul>
+          </article>
+
+          <article class="card card--ai" data-reveal style="--d:160ms">
+            <header class="card__head mono"><span class="card__idx">[06]</span><span data-i18n="k5.title">IA y APIs</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c1.5 9 4 11.5 13 13-9 1.5-11.5 4-13 13-1.5-9-4-11.5-13-13 9-1.5 11.5-4 13-13zM38 30c.6 3.6 1.6 4.6 5 5-3.4.6-4.4 1.6-5 5-.6-3.4-1.6-4.4-5-5 3.4-.4 4.4-1.4 5-5z"/></svg></header>
+            <ul class="card__list card__list--stack"><li data-i18n="k5.i1">APIs REST</li><li><span data-i18n="k5.i2">Integración de IA</span> <small class="mono">Google Gemini API</small></li></ul>
+          </article>
+
+          <article class="card card--soft" data-reveal style="--d:240ms">
+            <header class="card__head mono"><span class="card__idx">[07]</span><span data-i18n="k7.title">Competencias</span>
+              <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="17" r="6"/><circle cx="33" cy="17" r="6"/><path d="M6 38c1.5-6.5 6-10 11-10s9.5 3.5 11 10M24 31c1.8-2 5-3 9-3 5 0 9.5 3.5 11 10"/></svg></header>
+            <ul class="card__list card__list--stack"><li data-i18n="k7.i1">Trabajo en equipo</li><li data-i18n="k7.i2">Proactividad</li><li data-i18n="k7.i3">Resolución de problemas</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Contact ============================== -->
+    <section class="contact section" id="contact" data-theme="dark">
+      <div class="container">
+        <header class="sec-head">
+          <h2 class="sec-label"><span class="sec-label__num">(05)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="contact.label" data-fx="scramble">Contacto</span></h2>
+          <span class="sec-cmd">ping haytam</span>
+        </header>
+
+        <a class="contact__big" href="mailto:haytam25contact@gmail.com" data-chars-wrap><span data-i18n="contact.big" data-chars>¿Hablamos?</span></a>
+
+        <div class="contact__grid">
+          <p class="contact__sub" data-reveal data-i18n="contact.sub">Retos, nuevas oportunidades, aprendizajes nuevos y la intención de ser mejor que ayer es lo que más me motiva.</p>
+
+          <ul class="links">
+            <li class="links__item links__item--mail" data-reveal>
+              <span class="links__k mono" data-i18n="contact.email">Email</span>
+              <a class="links__v" href="mailto:haytam25contact@gmail.com">haytam25contact@gmail.com</a>
+              <button class="links__copy mono" type="button" data-copy="haytam25contact@gmail.com" data-cursor="copy"><i class="i i--copy" aria-hidden="true"></i><span data-i18n="contact.copy">Copiar</span></button>
+            </li>
+            <li class="links__item" data-reveal style="--d:60ms">
+              <span class="links__k mono">LinkedIn</span>
+              <a class="links__v" href="https://www.linkedin.com/in/haytam-ayadin-haltout-0a3384253/" target="_blank" rel="noopener">/haytam-ayadin</a>
+              <span class="links__arrow" aria-hidden="true"><i class="i i--ne"></i></span>
+            </li>
+            <li class="links__item" data-reveal style="--d:120ms">
+              <span class="links__k mono">GitHub</span>
+              <a class="links__v" href="https://github.com/haytam-25" target="_blank" rel="noopener">github.com/haytam-25</a>
+              <span class="links__arrow" aria-hidden="true"><i class="i i--ne"></i></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-theme="dark">
+    <div class="container footer__inner mono">
+      <p>© 2026 Haytam Ayadin Haltout</p>
+      <p class="footer__made" data-i18n="footer.made">Hecho a mano y personalizado con HTML, CSS y JavaScript.</p>
+      <p class="footer__clock">Madrid <time class="js-clock">--:--:--</time></p>
+      <div class="footer__actions">
+        <button class="footer__btn js-term-open" type="button"><span aria-hidden="true">&gt;_</span> <span data-i18n="footer.term">Abrir terminal</span> <kbd>Ctrl K</kbd></button>
+        <a class="footer__btn" href="#top"><span data-i18n="footer.top">Volver arriba</span> <i class="i i--up" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <p class="footer__giant" aria-hidden="true">Haytam<em>Ayadin</em></p>
+  </footer>
+
+  <!-- ============================== Terminal ============================== -->
+  <button class="term-fab js-term-open" type="button" aria-haspopup="dialog" aria-controls="term" aria-label="Abrir terminal" data-i18n-attr="aria-label:footer.term" data-magnetic="0.25">
+    <span aria-hidden="true">&gt;_</span>
+  </button>
+
+  <div class="term" id="term" role="dialog" aria-modal="true" aria-labelledby="term-title" hidden>
+    <div class="term__backdrop" data-term-close></div>
+    <div class="term__win">
+      <div class="term__bar">
+        <span class="term__dots"><button type="button" class="term__close" data-term-close aria-label="Cerrar terminal" data-i18n-attr="aria-label:term.close"></button><i></i><i></i></span>
+        <span class="term__title mono" id="term-title"><span class="sr-only" data-i18n="term.title">Terminal interactiva</span>haytam@portfolio: ~</span>
+        <kbd class="term__kbd mono">esc</kbd>
+      </div>
+      <div class="term__out mono" data-lenis-prevent aria-live="polite"></div>
+      <form class="term__form mono" autocomplete="off">
+        <label class="term__prompt" for="term-in"><span class="term__user">haytam@portfolio</span>:<span class="term__path">~</span>$</label>
+        <input class="term__in" id="term-in" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send">
+      </form>
+    </div>
+  </div>
+
+  <div class="toast mono" role="status" aria-live="polite"></div>
+</body>
+</html>
