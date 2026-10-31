@@ -102,12 +102,12 @@ window.I18N = {
     'bands.words': ['Design', 'Develop', 'Deploy', 'Generative AI', 'REST APIs', 'Clean code'],
 
     'about.label': 'About me',
-    'about.statement': 'I’m Haytam, a <em>full stack</em> developer in the making. I build complete applications with <em>Java, Spring Boot and React</em> — from the REST API to the interface — and I’ve already shipped a <em>generative AI</em> app to production, deployed with Docker, Nginx and Caddy.',
+    'about.statement': 'Hi I’m Haytam, a <em>full stack</em> developer at my free and work time. Building and structuring complete applications is what I enjoy with  <em>Java, Spring Boot and React</em> — from the REST API to the interface — and I’ve already shipped a <em>generative AI</em> app to production, deployed with Docker, Nginx and Caddy.',
     'about.text': 'I’m currently completing a Higher Technician Degree in Web Application Development (expected June 2027). I’m looking for an internship or a team where I can keep learning and add value from day one. <strong>Open to relocation.</strong>',
     'about.s1': 'AI app live in production',
     'about.s2': 'Technologies in my stack',
     'about.s3': 'Languages: Spanish, Arabic & English',
-    'about.s4': 'Expected DAW graduation',
+    'about.s4': 'Degree graduation',
 
     'journey.label': 'Experience',
     'journey.title': 'My commit <em>history</em>',
@@ -190,7 +190,7 @@ window.I18N = {
 
     'contact.label': 'Contact',
     'contact.big': 'Let’s talk.',
-    'contact.sub': 'Challenges, new opportunities, constant learning and the drive to be better than yesterday — that’s what motivates me most.',
+    'contact.sub': 'Challenges, new opportunities, constant learning and with the mentality of being be better than yesterday — that’s what motivates me most.',
     'contact.copy': 'Copy',
     'contact.email': 'Email',
 
