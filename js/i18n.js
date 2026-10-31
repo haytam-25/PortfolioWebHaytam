@@ -92,7 +92,7 @@ window.I18N = {
     'hero.time': 'Local time',
     'hero.stackK': '— Stack',
     'hero.role': 'Full Stack <br>Developer',
-    'hero.tagA': 'I build',
+    'hero.tagA': 'Design & develop',
     'hero.tagB': 'end to end.',
     'hero.rotator': ['web applications', 'REST APIs', 'AI-powered products', 'React interfaces', 'browser games'],
     'hero.ctaWork': 'View projects',
