@@ -881,13 +881,21 @@ html[data-theme="light"] .hero__glow { opacity: 0; }
   text-align: right;
 }
 .hero__w2 { position: relative; display: inline-flex; align-items: flex-start; }
-.hero__star {
-  width: calc(var(--name) * .2);
-  height: calc(var(--name) * .2);
-  margin: calc(var(--name) * .08) 0 0 calc(var(--name) * .02);
-  fill: var(--violet);
-  animation: spin 9s linear infinite;
+.hero__code {
+  width: calc(var(--name) * .26);
+  height: calc(var(--name) * .26);
+  margin: calc(var(--name) * .05) 0 0 calc(var(--name) * .03);
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: sway 3.5s ease-in-out infinite alternate;
   filter: drop-shadow(0 0 24px rgba(139, 92, 246, .55));
+}
+@keyframes sway {
+  from { transform: translateY(-4%) rotate(-6deg); }
+  to { transform: translateY(4%) rotate(6deg); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -978,7 +986,7 @@ html[data-theme="light"] .hero__glow { opacity: 0; }
   opacity: 0;
   transform: translateY(24px);
 }
-.js .hero__star { opacity: 0; scale: .2; }
+.js .hero__code { opacity: 0; scale: .2; }
 .js .hero__foot::before { transform: scaleX(0); }
 
 .js.is-loaded .hero__word .c {
@@ -1005,7 +1013,7 @@ html[data-theme="light"] .hero__glow { opacity: 0; }
 .js.is-loaded .hero__tagline { transition-delay: 1.05s; }
 .js.is-loaded .hero__ctas { transition-delay: 1.15s; }
 .js.is-loaded .hero__scroll { transition-delay: 1.25s; }
-.js.is-loaded .hero__star { opacity: 1; scale: 1; transition: opacity .8s .8s, scale 1.4s var(--ease-back) .8s; }
+.js.is-loaded .hero__code { opacity: 1; scale: 1; transition: opacity .8s .8s, scale 1.4s var(--ease-back) .8s; }
 .js.is-loaded .hero__foot::before { transform: none; transition: transform 1.6s var(--ease-io) .6s; }
 
 @keyframes charUp { from { transform: translateY(108%) rotate(8deg); } to { transform: none; } }
@@ -1024,51 +1032,83 @@ html[data-theme="light"] .hero__glow { opacity: 0; }
 }
 
 /* ==========================================================================
-   Bands (marquees)
+   Warp: on scroll the page flies through the words, towards a </> whose slash
+   ends up filling the screen and hands over to the light section.
+   The stage is pinned while .warp scrolls past, so its height sets the length.
    ========================================================================== */
-.bands {
+.warp {
+  --warp-size: clamp(6rem, 17vw, 22rem);
   position: relative;
-  z-index: 3;
-  height: clamp(150px, 19vw, 300px);
-  margin-top: calc(clamp(150px, 19vw, 300px) * -.14);
-  margin-bottom: calc(clamp(150px, 19vw, 300px) * -.36);
+  display: none;
+  height: 190vh;
+  height: 190svh;
   pointer-events: none;
+}
+.js .warp { display: block; }
+/* Theme ranges read by initTheme: the page turns light as the slash closes in */
+.warp__zone { position: absolute; inset: 0 0 56vh; inset: 0 0 56svh; }
+.warp__zone--flip { inset: auto 0 0; height: 56vh; height: 56svh; }
+.warp__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   overflow: clip;
 }
-.band {
+.warp__glow {
   position: absolute;
-  left: -5%;
+  left: 50%;
   top: 50%;
-  width: 110%;
-  padding-block: clamp(.6rem, 1.1vw, 1rem);
-  overflow: hidden;
-  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .5);
+  width: 110vmin;
+  height: 110vmin;
+  margin: -55vmin 0 0 -55vmin;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(139, 92, 246, .3), rgba(139, 92, 246, .08) 50%, transparent);
+  opacity: 0;
+  will-change: transform, opacity;
 }
-.band--a { background: var(--bone); color: var(--ink); transform: translateY(-50%) rotate(-3.2deg); }
-.band--b { background: var(--violet); color: #fff; transform: translateY(-50%) rotate(2.4deg); }
-.band__track { display: flex; width: max-content; will-change: transform; }
-.band__set { display: inline-flex; flex: none; }
-.band__item {
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(1rem, 2vw, 2rem);
-  padding-right: clamp(1rem, 2vw, 2rem);
-  font-size: clamp(1.4rem, 3.4vw, 3.3rem);
+.warp__field { position: absolute; inset: 0; }
+.warp__word,
+.warp__dust {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+}
+/* Set at their closest size, so they only ever scale down. Close words get a
+   layer and move without repainting; far ones are small and cheap to repaint,
+   and must not have one: Chrome keeps a will-change layer first painted at a
+   small scale in low resolution, which leaves the word blurry as it grows. */
+.warp__word.is-near { will-change: transform, opacity; }
+.warp__word {
+  font-size: var(--warp-size);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -.035em;
   font-variation-settings: "wdth" 80;
   text-transform: uppercase;
+  text-rendering: geometricPrecision;
   white-space: nowrap;
+  color: var(--bone);
 }
-.band--b .band__item { font-family: var(--f-serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: -.01em; font-size: clamp(1.5rem, 3.6vw, 3.5rem); }
-.band__star { width: .6em; height: .6em; fill: var(--violet); flex: none; }
-.band--b .band__star { fill: var(--ink); }
+.warp__word--serif {
+  font-family: var(--f-serif);
+  font-size: calc(var(--warp-size) * 1.12);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: var(--violet-hi);
+}
+.warp__dust { width: calc(var(--warp-size) * .4); height: calc(var(--warp-size) * .4); stroke: var(--violet); }
+.warp__code { position: absolute; inset: 0; z-index: 40; width: 100%; height: 100%; max-width: none; stroke: var(--bone); }
+.warp__dust, .warp__code { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ==========================================================================
    About
    ========================================================================== */
-.about { padding-top: clamp(8rem, 20vh, 14rem); }
+.about { padding-top: clamp(5rem, 11vh, 8rem); }
 
 .statement {
   font-size: clamp(1.8rem, 4.25vw, 4.7rem);
@@ -2061,6 +2101,7 @@ html.menu-open .term-fab, html.term-open .term-fab { opacity: 0; pointer-events:
   .hero__foot { grid-template-columns: 1fr; gap: 1.25rem; }
   .hero__tagline { font-size: clamp(1.45rem, 6.4vw, 1.9rem); }
   .hero__scroll { display: none; }
+  .warp { --warp-size: 24vw; }
   .btn { height: 3.25rem; padding-left: 1.3rem; font-size: .95rem; }
   .btn__icon { width: 2.4rem; height: 2.4rem; }
   .sec-head { flex-wrap: wrap; }
@@ -2093,5 +2134,20 @@ html.menu-open .term-fab, html.term-open .term-fab { opacity: 0; pointer-events:
   .grain { animation: none; }
   .js [data-reveal], .js .commit__meta, .js .commit__body { opacity: 1; transform: none; }
   .js [data-split] .w__i, .js .hero__word .c, .js .contact__big .c { transform: none; opacity: 1; }
-  .hero__star, .pulse::after { animation: none; }
+  .hero__code, .pulse::after { animation: none; }
+  /* No flight: the same words, at rest */
+  .warp { height: auto; padding: clamp(4rem, 9vw, 7rem) var(--pad) 0; }
+  .warp__stage { position: static; height: auto; overflow: visible; }
+  .warp__field {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: .15em .6em;
+    --warp-size: clamp(1.4rem, 3.4vw, 3.3rem);
+  }
+  .warp__word { position: static; opacity: 1; visibility: visible; will-change: auto; color: var(--fg); }
+  .warp__word--serif { color: var(--accent); }
+  .warp__zone, .warp__glow, .warp__dust, .warp__code { display: none; }
 }

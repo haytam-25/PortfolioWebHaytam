@@ -153,7 +153,7 @@
           </span>
           <span class="hero__row hero__row--2" aria-hidden="true">
             <span class="hero__role" data-i18n="hero.role">Desarrollador <br>Full Stack</span>
-            <span class="hero__w2"><span class="hero__word hero__word--serif" data-chars>Ayadin</span><svg class="hero__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg></span>
+            <span class="hero__w2"><span class="hero__word hero__word--serif" data-chars>Ayadin</span><svg class="hero__code" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 6 1.5 12l6 6M16.5 6l6 6-6 6M14.5 3.5 9.5 20.5"/></svg></span>
           </span>
         </h1>
 
@@ -178,10 +178,15 @@
       </div>
     </section>
 
-    <!-- ============================== Bands ============================== -->
-    <div class="bands" aria-hidden="true">
-      <div class="band band--b" data-band data-dir="-1" data-words="bands.words"><div class="band__track"></div></div>
-      <div class="band band--a" data-band data-dir="1" data-list="Java|Spring Boot|React|Docker|PostgreSQL|Google Gemini|REST API|Vue.js|Tailwind CSS|Linux|Git"><div class="band__track"></div></div>
+    <!-- ============================== Warp ============================== -->
+    <div class="warp" aria-hidden="true" data-list="Java|Spring Boot|React|Docker|PostgreSQL|Google Gemini|REST API|Vue.js|Tailwind CSS|Linux|Git">
+      <i class="warp__zone" data-theme="dark"></i>
+      <i class="warp__zone warp__zone--flip" data-theme="light"></i>
+      <div class="warp__stage">
+        <div class="warp__glow"></div>
+        <div class="warp__field"></div>
+        <svg class="warp__code"><path d="M7.5 6 1.5 12l6 6M16.5 6l6 6-6 6M14.5 3.5 9.5 20.5"/></svg>
+      </div>
     </div>
 
     <!-- ============================== About ============================== -->
@@ -558,7 +563,7 @@
   <footer class="footer" data-theme="dark">
     <div class="container footer__inner mono">
       <p>© 2026 Haytam Ayadin Haltout</p>
-      <p class="footer__made" data-i18n="footer.made">Hecho a mano y personalizado con HTML, CSS y JavaScript.</p>
+      <p class="footer__made" data-i18n="footer.made">Personalizado personalmente con HTML, CSS y JavaScript.</p>
       <p class="footer__clock">Madrid <time class="js-clock">--:--:--</time></p>
       <div class="footer__actions">
         <button class="footer__btn js-term-open" type="button"><span aria-hidden="true">&gt;_</span> <span data-i18n="footer.term">Abrir terminal</span> <kbd>Ctrl K</kbd></button>

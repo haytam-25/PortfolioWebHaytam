@@ -22,7 +22,6 @@
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const desktop = matchMedia('(min-width: 1024px)');
 
-  const STAR = '<svg class="band__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg>';
   const EMAIL = 'haytam25contact@gmail.com';
 
   const App = (window.App = {
@@ -675,47 +674,149 @@
   }
 
   /* ------------------------------------------------------------------------
-     Marquee bands (speed and direction follow the scroll)
+     Warp: fly through the words towards a </>, whose slash wipes the screen to
+     the light section. Depth comes from the scroll position, so it plays both
+     ways; only the slow roll of the tunnel keeps moving when you stop.
      ------------------------------------------------------------------------ */
-  function initBands() {
-    let dirSign = 1;
-    const bands = $$('[data-band]').map(band => {
-      const track = $('.band__track', band);
-      const b = { band, track, dir: parseFloat(band.dataset.dir) || 1, x: 0, setW: 0, visible: true };
-      b.build = () => {
-        const items = band.dataset.words ? App.t(band.dataset.words) : band.dataset.list.split('|');
-        const set = `<span class="band__set">${items.map(w => `<span class="band__item">${escapeHTML(w)}${STAR}</span>`).join('')}</span>`;
-        track.innerHTML = set;
-        b.setW = track.firstElementChild.offsetWidth;
-        const copies = Math.max(2, Math.ceil((App.vw * 1.25) / Math.max(1, b.setW)) + 1);
-        track.innerHTML = set.repeat(copies);
-        b.x = -Math.random() * b.setW;
-      };
-      new IntersectionObserver(([en]) => { b.visible = en.isIntersecting; }).observe(band);
-      return b;
-    });
-    const rebuild = () => bands.forEach(b => b.build());
-    rebuild();
-    App.onLang(() => bands.forEach(b => { if (b.band.dataset.words) b.build(); }));
-    let lastVW = App.vw;
+  function initWarp() {
+    const sec = $('.warp');
+    if (!sec) return;
+    const field = $('.warp__field', sec);
+    const stage = $('.warp__stage', sec);
+    const code = $('.warp__code path', sec);
+    const tech = sec.dataset.list.split('|');
+
+    const DEPTH = 12;         // how far away things start (1 / (1 + DEPTH) of their closest size)
+    const LIFE = .28;         // share of the journey a word takes to reach the camera
+    const LAST_WORD = .76;    // progress at which the last word goes past
+    const WIPE = .72;         // progress at which the </> starts to grow
+    const GOLDEN = 2.39996;   // golden angle: consecutive words never share a side
+    const DUST_COUNT = App.vw < 768 ? 9 : 16;
+    const DUST_LIFE = .38;
+    const STROKE = 2.6;       // of the </>, in path units; half of it is the slash reach that has to clear the corners
+    const NEAR = .25;         // from this scale on a word gets its own layer (see .warp__word.is-near)
+
+    const smooth = (a, b, v) => {
+      const x = clamp((v - a) / (b - a), 0, 1);
+      return x * x * (3 - 2 * x);
+    };
+    const toggle = (it, on) => {
+      if (it.on === on) return;
+      it.on = on;
+      it.el.style.visibility = on ? 'visible' : 'hidden';
+    };
+
+    let words = [], dust = [];
+    const build = () => {
+      // One idea, then two tools, so both lists stay present the whole way.
+      const said = App.t('warp.words');
+      const seq = [];
+      for (let i = 0, j = 0; i < said.length || j < tech.length; i++) {
+        if (said[i]) seq.push({ text: said[i], serif: true });
+        for (let n = 0; n < 2 && j < tech.length; n++) seq.push({ text: tech[j++], serif: false });
+      }
+      const dustHTML = `<svg class="warp__dust" viewBox="0 0 24 24" stroke-width="${STROKE}"><path d="${code.getAttribute('d')}"/></svg>`;
+      // Earlier words are always closer, so they stack on top.
+      field.innerHTML = dustHTML.repeat(DUST_COUNT) + seq.map((w, i) =>
+        `<span class="warp__word${w.serif ? ' warp__word--serif' : ''}" style="z-index:${seq.length - i}">${escapeHTML(w.text)}</span>`
+      ).join('');
+      const span = LAST_WORD - LIFE;
+      words = $$('.warp__word', field).map((el, i, all) => ({
+        el, on: false, near: false, at: all.length > 1 ? (i / (all.length - 1)) * span : 0, angle: i * GOLDEN - .6
+      }));
+      // Depth and angle from two unrelated sequences (R2), or the dust lines up in arms.
+      dust = $$('.warp__dust', field).map((el, i) => ({
+        el, on: false, phase: (i * .7549) % 1, angle: ((i * .5698) % 1) * 6.2832, reach: .8 + (i % 3) * .3
+      }));
+    };
+    build();
+    App.onLang(build);
+    if (reduced) return;
+
+    const glow = $('.warp__glow', sec);
+    let start = 0, end = 1, w = 1, h = 1, rx = 1, ry = 1, kRest = 1, kFull = 1;
     App.onMeasure(() => {
-      if (Math.abs(App.vw - lastVW) > 40) rebuild();
-      lastVW = App.vw;
-      bands.forEach(b => { b.setW = b.track.firstElementChild ? b.track.firstElementChild.offsetWidth : 0; });
+      const r = sec.getBoundingClientRect();
+      w = stage.offsetWidth;
+      h = stage.offsetHeight;
+      // Already underway as the stage rises into view, so there is no dead scroll.
+      start = r.top + App.scrollY - h * .65;
+      end = r.top + App.scrollY + sec.offsetHeight - h;
+      const wide = w >= h;
+      // Words are wide: on a tall screen there is only room to spread them vertically.
+      rx = w * (wide ? .85 : .3);
+      ry = h * (wide ? .85 : .95);
+      kRest = Math.max(16, Math.min(w, h) * .03) / 12;
+      kFull = (Math.hypot(w, h) / 2 / (STROKE / 2)) * 1.08;
     });
 
+    let visible = false;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { rootMargin: '10% 0px' }).observe(sec);
+
+    code.setAttribute('stroke-width', STROKE);
+    let t = 0, roll = 0, tilt = 0, dir = 1, vx = 0, vy = 0;
     App.onTick(dt => {
-      if (App.velocity > .3) dirSign = 1;
-      else if (App.velocity < -.3) dirSign = -1;
-      const boost = reduced ? 0 : Math.min(Math.abs(App.velocity) * 1.4, 34);
-      const base = reduced ? 0 : 1.05;
-      bands.forEach(b => {
-        if (!b.visible || !b.setW) return;
-        b.x -= (base + boost) * 60 * dt * b.dir * dirSign;
-        if (b.x <= -b.setW) b.x += b.setW;
-        else if (b.x > 0) b.x -= b.setW;
-        b.track.style.transform = `translate3d(${b.x.toFixed(2)}px,0,0)`;
-      });
+      const target = clamp((App.scrollY - start) / Math.max(1, end - start), 0, 1);
+      if (!visible) {
+        t = target;
+        return;
+      }
+      t = damp(t, target, 14, dt);
+      if (App.velocity > .3) dir = 1;
+      else if (App.velocity < -.3) dir = -1;
+      const speed = Math.abs(App.velocity);
+      roll += dt * (.04 + Math.min(speed * .008, .6)) * dir;
+
+      // The vanishing point leans towards the pointer, and recentres for the wipe.
+      const wipe = clamp((t - WIPE) / (1 - WIPE), 0, 1);
+      const lean = finePointer && App.pointer.has ? (1 - wipe) * .05 : 0;
+      vx = damp(vx, lean * (App.pointer.x - App.vw / 2), 4, dt);
+      vy = damp(vy, lean * (App.pointer.y - App.vh / 2), 4, dt);
+
+      for (let i = 0; i < words.length; i++) {
+        const it = words[i];
+        const p = (t - it.at) / LIFE;
+        toggle(it, p > 0 && p < 1);
+        const s = 1 / (1 + (1 - p) * DEPTH);
+        const near = it.on && s >= NEAR;
+        if (near !== it.near) {
+          it.near = near;
+          it.el.classList.toggle('is-near', near);
+        }
+        if (!it.on) continue;
+        const a = it.angle + roll + p * 1.1;
+        const x = vx * (1 - s) + Math.cos(a) * rx * s;
+        const y = vy * (1 - s) + Math.sin(a) * ry * s;
+        it.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-50%) scale(${s.toFixed(4)})`;
+        it.el.style.opacity = (smooth(0, .4, p) * (1 - smooth(.8, .98, p))).toFixed(3);
+      }
+
+      const dustOn = t > 0 && t < WIPE + .1;
+      for (let i = 0; i < dust.length; i++) {
+        const it = dust[i];
+        toggle(it, dustOn);
+        if (!it.on) continue;
+        const p = (t / DUST_LIFE + it.phase) % 1;
+        const s = 1 / (1 + (1 - p) * DEPTH);
+        const a = it.angle + roll * 1.5 + p * 1.1;
+        const x = vx * (1 - s) + Math.cos(a) * rx * it.reach * s;
+        const y = vy * (1 - s) + Math.sin(a) * ry * it.reach * s;
+        it.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-50%) scale(${s.toFixed(4)}) rotate(${(Math.sin(a) * 10).toFixed(1)}deg)`;
+        it.el.style.opacity = (smooth(0, .3, p) * (1 - smooth(.8, .98, p)) * smooth(0, .04, t) * .85).toFixed(3);
+      }
+
+      // Exponential growth reads as constant speed. Upright so it stays legible: only
+      // speed tips it. The < > leave by the sides and the slash widens to cover the screen.
+      tilt = damp(tilt, clamp(App.velocity * .25, -12, 12) * (1 - wipe), 6, dt);
+      const rest = kRest * (1 + Math.min(t, WIPE) / WIPE * .8);
+      const k = rest * Math.pow(kFull / rest, Math.pow(wipe, 1.4));
+      const cx = w / 2 + vx;
+      const cy = h / 2 + vy;
+      code.setAttribute('transform', `translate(${cx.toFixed(1)} ${cy.toFixed(1)}) rotate(${tilt.toFixed(2)}) scale(${k.toFixed(3)}) translate(-12 -12)`);
+      code.style.opacity = smooth(.02, .14, t).toFixed(3);
+
+      glow.style.transform = `translate3d(${vx.toFixed(1)}px,${vy.toFixed(1)}px,0) scale(${(.55 + t * .9).toFixed(3)})`;
+      glow.style.opacity = smooth(0, .3, t).toFixed(3);
     });
   }
 
@@ -1194,7 +1295,7 @@
     safe('anchors', initAnchors);
     safe('cursor', initCursor);
     safe('magnetic', initMagnetic);
-    safe('bands', initBands);
+    safe('warp', initWarp);
     safe('statement', initStatement);
     safe('git graph', initGitGraph);
     safe('visuals', initVisuals);
