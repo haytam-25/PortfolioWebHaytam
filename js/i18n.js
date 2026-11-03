@@ -9,7 +9,7 @@ window.I18N = {
   es: {
     'loader.msgs': ['cargando tipografías', 'compilando estilos', 'iniciando WebGL', 'desplegando portfolio'],
     'hero.rotator': ['aplicaciones web', 'APIs REST', 'productos con IA', 'interfaces en React', 'videojuegos web'],
-    'warp.words': [ 'Desarrollo','Contenedores', 'Despliegue', 'IA generativa', 'APIs REST', 'CI/CD'],
+    'warp.words': [ 'Desarrollo','OpenAI','Testing', 'Despliegue', 'IA generativa', 'APIs REST', 'CI/CD'],
     'nav.menuOpen': 'Abrir menú',
     'nav.menuClose': 'Cerrar menú',
     'stack.hintTouch': 'Toca las piezas para lanzarlas',
