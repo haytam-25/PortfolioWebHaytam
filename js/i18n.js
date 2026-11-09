@@ -9,7 +9,9 @@ window.I18N = {
   es: {
     'loader.msgs': ['cargando tipografías', 'compilando estilos', 'iniciando WebGL', 'desplegando portfolio'],
     'hero.rotator': ['aplicaciones web', 'APIs REST', 'productos con IA', 'interfaces en React', 'videojuegos web'],
-    'warp.words': [ 'Desarrollo','OpenAI','Testing', 'Despliegue', 'IA generativa', 'APIs REST', 'CI/CD'],
+
+    'warp.words': [ 'Desarrollo','OpenAI','Testing', 'Validacion de codigo','CI/CD', 'IA generativa', 'APIs REST', 'LMM',],
+    
     'nav.menuOpen': 'Abrir menú',
     'nav.menuClose': 'Cerrar menú',
     'stack.hintTouch': 'Toca las piezas para lanzarlas',
@@ -99,7 +101,8 @@ window.I18N = {
     'hero.ctaCv': 'Contact',
     'hero.scroll': 'Scroll',
 
-    'warp.words': ['Design', 'Develop', 'Deploy', 'Generative AI', 'REST APIs', 'Clean code'],
+
+    'warp.words': ['Develop','OpenAI','Testing', 'Code Validation','CI/CD', 'Generative AI', 'REST APIs', 'LMM'],
 
     'about.label': 'About me',
     'about.statement': 'Hi I’m Haytam, a <em>full stack</em> developer at my free and work time, I know, you can call me a geek. Building and structuring complete applications is what I enjoy with  <em>Java, Spring Boot and React</em> — from the REST API to the interface — and I’ve already shipped a <em>generative AI</em> app to production, deployed with Docker, Nginx and Caddy.',
