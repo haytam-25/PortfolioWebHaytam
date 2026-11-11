@@ -50,6 +50,10 @@
     "address": { "@type": "PostalAddress", "addressLocality": "Alcalá de Henares", "addressRegion": "Madrid", "addressCountry": "ES" },
     "knowsAbout": ["Java", "Spring Boot", "React", "JavaScript", "Docker", "PostgreSQL", "REST APIs", "Google Gemini API"],
     "knowsLanguage": ["es", "ar", "en"],
+    "hasCredential": [
+      { "@type": "EducationalOccupationalCredential", "name": "Python Essentials 1", "credentialCategory": "certificate",
+        "recognizedBy": { "@type": "Organization", "name": "Cisco Networking Academy" }, "url": "assets/certs/python-essentials-1.pdf" }
+    ],
     "sameAs": ["https://www.linkedin.com/in/haytam-ayadin-haltout-0a3384253/", "https://github.com/haytam-25"]
   }
   </script>
@@ -100,7 +104,8 @@
       <a class="nav__link" href="#journey"><sup>02</sup><span data-i18n="nav.journey" data-fx="scramble">Trayectoria</span></a>
       <a class="nav__link" href="#work"><sup>03</sup><span data-i18n="nav.work" data-fx="scramble">Proyectos</span></a>
       <a class="nav__link" href="#stack"><sup>04</sup><span data-i18n="nav.stack" data-fx="scramble">Stack</span></a>
-      <a class="nav__link" href="#contact"><sup>05</sup><span data-i18n="nav.contact" data-fx="scramble">Contacto</span></a>
+      <a class="nav__link" href="#certs"><sup>05</sup><span data-i18n="nav.certs" data-fx="scramble">Certificados</span></a>
+      <a class="nav__link" href="#contact"><sup>06</sup><span data-i18n="nav.contact" data-fx="scramble">Contacto</span></a>
     </nav>
 
     <div class="nav__end">
@@ -122,7 +127,8 @@
       <a href="#journey"><span class="menu__num">02</span><span data-i18n="nav.journey">Trayectoria</span></a>
       <a href="#work"><span class="menu__num">03</span><span data-i18n="nav.work">Proyectos</span></a>
       <a href="#stack"><span class="menu__num">04</span><span data-i18n="nav.stack">Stack</span></a>
-      <a href="#contact"><span class="menu__num">05</span><span data-i18n="nav.contact">Contacto</span></a>
+      <a href="#certs"><span class="menu__num">05</span><span data-i18n="nav.certs">Certificados</span></a>
+      <a href="#contact"><span class="menu__num">06</span><span data-i18n="nav.contact">Contacto</span></a>
     </nav>
     <div class="menu__foot mono">
       <a href="mailto:haytam25contact@gmail.com">haytam25contact@gmail.com</a>
@@ -525,11 +531,64 @@
       </div>
     </section>
 
+    <!-- ============================== Certificates ============================== -->
+    <section class="certs section" id="certs" data-theme="light">
+      <div class="container">
+        <header class="sec-head">
+          <h2 class="sec-label"><span class="sec-label__num">(05)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="certs.label" data-fx="scramble">Certificados</span></h2>
+          <span class="sec-cmd">gpg --verify ./certs</span>
+        </header>
+
+        <div class="certs__intro">
+          <p class="sec-title" data-split data-i18n="certs.title">Certificados</p>
+          <p class="certs__sub" data-reveal data-i18n="certs.sub">Formación complementaria verificada. Cada certificado se puede abrir en PDF.</p>
+        </div>
+
+        <!--
+          Para añadir un certificado nuevo:
+          1. Sube el PDF y la insignia/logo a assets/certs/
+          2. Copia un <article class="card cert"> completo, cambia rutas, textos e índice [0X]
+          3. Añade sus claves certN.* en inglés en js/i18n.js (y en 'term.certs' para la terminal)
+          Ponlo el primero de la lista si es el más reciente.
+        -->
+        <div class="certs__grid">
+          <!-- 01 · Python Essentials 1 -->
+          <article class="card cert" data-reveal>
+            <a class="cert__badge" href="assets/certs/python-essentials-1.pdf" target="_blank" rel="noopener" data-cursor="view" aria-label="Abrir el certificado Python Essentials 1 (PDF)" data-i18n-attr="aria-label:cert1.aria">
+              <img src="assets/certs/python-essentials-1.png" width="180" height="180" alt="Insignia verificada de Python Essentials 1, Cisco Networking Academy" data-i18n-attr="alt:cert1.alt" loading="lazy" decoding="async">
+            </a>
+            <div class="cert__body">
+              <header class="card__head mono">
+                <span class="card__idx">[01]</span><span>Cisco Networking Academy</span>
+                <span class="cert__ok"><i class="i i--check" aria-hidden="true"></i><span data-i18n="certs.verified">Verificado</span></span>
+              </header>
+              <h3 class="cert__title">Python Essentials 1</h3>
+              <p class="cert__issuer mono" data-i18n="cert1.issuer">En colaboración con OpenEDG Python Institute</p>
+              <p class="cert__desc" data-i18n="cert1.desc">Diseño, depuración y refactorización de programas en Python 3, pensamiento algorítmico y uso de la biblioteca estándar para resolver problemas reales.</p>
+              <ul class="tags"><li>Python 3</li><li>Debugging</li><li>Refactoring</li><li>Standard Library</li></ul>
+              <dl class="cert__facts mono">
+                <div><dt data-i18n="certs.hours">Duración</dt><dd>30 h</dd></div>
+                <div><dt data-i18n="certs.issued">Emitido</dt><dd><time datetime="2026-11-11" data-i18n="cert1.date">Nov 2026</time></dd></div>
+              </dl>
+              <a class="arrow-link" href="assets/certs/python-essentials-1.pdf" target="_blank" rel="noopener"><span data-i18n="certs.view">Ver certificado</span><span class="arrow-link__icon" aria-hidden="true"><i class="i i--ne"></i></span></a>
+            </div>
+          </article>
+
+          <!-- Hueco para el siguiente: bórralo si ya no lo quieres -->
+          <div class="cert cert--next" data-reveal style="--d:120ms">
+            <span class="cert__next-cmd mono">$ git checkout -b cert/next</span>
+            <p class="cert__next-title" data-i18n="certs.nextTitle">Próximo certificado <em>en camino</em></p>
+            <p class="cert__next-text" data-i18n="certs.nextText">Sigo formándome: esta lista crece con cada curso que termino.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== Contact ============================== -->
     <section class="contact section" id="contact" data-theme="dark">
       <div class="container">
         <header class="sec-head">
-          <h2 class="sec-label"><span class="sec-label__num">(05)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="contact.label" data-fx="scramble">Contacto</span></h2>
+          <h2 class="sec-label"><span class="sec-label__num">(06)</span><span class="sec-label__bar" aria-hidden="true"></span><span data-i18n="contact.label" data-fx="scramble">Contacto</span></h2>
           <span class="sec-cmd">ping haytam</span>
         </header>
 

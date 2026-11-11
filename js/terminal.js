@@ -19,6 +19,7 @@
     experiencia: 'experience', exp: 'experience', formacion: 'experience', 'formación': 'experience', education: 'experience',
     proyectos: 'projects', ls: 'projects', work: 'projects',
     habilidades: 'skills', stack: 'skills', tecnologias: 'skills', 'tecnologías': 'skills',
+    certificados: 'certs', certificaciones: 'certs', certificates: 'certs', certifications: 'certs', diplomas: 'certs', cert: 'certs',
     contacto: 'contact', email: 'contact',
     idioma: 'lang', language: 'lang',
     fecha: 'date', hora: 'date', time: 'date',
@@ -27,7 +28,7 @@
     abrir: 'open'
   };
 
-  const COMMANDS = ['help', 'whoami', 'about', 'experience', 'projects', 'skills', 'contact', 'open', 'lang', 'date', 'clear', 'exit', 'sudo', 'echo',
+  const COMMANDS = ['help', 'whoami', 'about', 'experience', 'projects', 'skills', 'certs', 'contact', 'open', 'lang', 'date', 'clear', 'exit', 'sudo', 'echo',
     'linkedin', 'github', 'mecanicai', 'juego', 'game'];
 
   const BANNER = String.raw`
@@ -100,6 +101,9 @@
           break;
         case 'skills':
           print(rows(t('term.skills').map(([a, b]) => [esc(a), esc(b)])));
+          break;
+        case 'certs':
+          print(rows(t('term.certs').map(([a, b]) => [esc(a), b])));
           break;
         case 'contact': {
           const L = t('term.contactLabels');

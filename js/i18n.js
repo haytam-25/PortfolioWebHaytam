@@ -34,6 +34,7 @@ window.I18N = {
       ['experience', 'experiencia y formación'],
       ['projects', 'proyectos destacados'],
       ['skills', 'stack técnico'],
+      ['certs', 'certificados y diplomas'],
       ['contact', 'cómo contactarme'],
       ['open &lt;sitio&gt;', 'linkedin · github · mecanicai · juego'],
       ['lang es|en', 'cambiar idioma'],
@@ -60,6 +61,9 @@ window.I18N = {
       ['devops', 'Git, GitHub, Docker, Maven, Linux, Vercel, Railway, Nginx, Caddy'],
       ['otros', 'APIs REST, integración de IA (Google Gemini API)']
     ],
+    'term.certs': [
+      ['Nov 2026', 'Python Essentials 1 · 30 h — Cisco Networking Academy · <a href="assets/certs/python-essentials-1.pdf" target="_blank" rel="noopener">ver PDF</a>']
+    ],
     'term.contactLabels': ['email', 'linkedin', 'github'],
     'term.opening': 'Abriendo {site}…',
     'term.openUsage': 'uso: open linkedin | github | mecanicai | juego',
@@ -82,6 +86,7 @@ window.I18N = {
     'nav.journey': 'Experience',
     'nav.work': 'Projects',
     'nav.stack': 'Stack',
+    'nav.certs': 'Certificates',
     'nav.contact': 'Contact',
     'nav.status': 'Available',
     'nav.menuOpen': 'Open menu',
@@ -191,6 +196,21 @@ window.I18N = {
     'k7.i2': 'Proactivity',
     'k7.i3': 'Problem solving',
 
+    'certs.label': 'Certificates',
+    'certs.title': 'Certificates',
+    'certs.sub': 'Verified extra training. Every certificate opens as a PDF.',
+    'certs.verified': 'Verified',
+    'certs.hours': 'Duration',
+    'certs.issued': 'Issued',
+    'certs.view': 'View certificate',
+    'certs.nextTitle': 'Next certificate <em>on the way</em>',
+    'certs.nextText': 'I keep learning — this list grows with every course I finish.',
+    'cert1.aria': 'Open the Python Essentials 1 certificate (PDF)',
+    'cert1.alt': 'Python Essentials 1 verified badge, Cisco Networking Academy',
+    'cert1.issuer': 'In collaboration with OpenEDG Python Institute',
+    'cert1.desc': 'Designing, debugging and refactoring Python 3 programs, algorithmic thinking and using the standard library to solve real problems.',
+    'cert1.date': 'Nov 2026',
+
     'contact.label': 'Contact',
     'contact.big': 'Let’s talk.',
     'contact.sub': 'Challenges, new opportunities, constant learning and with the mentality of being be better than yesterday — that’s what motivates me most.',
@@ -223,6 +243,7 @@ window.I18N = {
       ['experience', 'experience & education'],
       ['projects', 'featured projects'],
       ['skills', 'tech stack'],
+      ['certs', 'certificates & diplomas'],
       ['contact', 'how to reach me'],
       ['open &lt;site&gt;', 'linkedin · github · mecanicai · game'],
       ['lang es|en', 'switch language'],
@@ -248,6 +269,9 @@ window.I18N = {
       ['databases', 'PostgreSQL'],
       ['devops', 'Git, GitHub, Docker, Maven, Linux, Vercel, Railway, Nginx, Caddy'],
       ['other', 'REST APIs, AI integration (Google Gemini API)']
+    ],
+    'term.certs': [
+      ['Nov 2026', 'Python Essentials 1 · 30 h — Cisco Networking Academy · <a href="assets/certs/python-essentials-1.pdf" target="_blank" rel="noopener">view PDF</a>']
     ],
     'term.contactLabels': ['email', 'linkedin', 'github'],
     'term.opening': 'Opening {site}…',

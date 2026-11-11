@@ -40,6 +40,7 @@ js/stack-physics.js   Píldoras del stack con física (Matter.js)
 js/terminal.js        Terminal interactiva
 js/vendor/            Lenis (scroll suave) y Matter.js (física), ambos MIT
 assets/projects/      Capturas de los proyectos en WebP (900 px y 1600 px)
+assets/certs/         Certificados (PDF) y sus insignias/logos
 assets/og-image.png   Imagen de vista previa al compartir el enlace
 ```
 
@@ -50,6 +51,10 @@ assets/og-image.png   Imagen de vista previa al compartir el enlace
 - **Proyectos nuevos**: copia un `<article class="project">` dentro de `.work__track`;
   la galería horizontal se recalcula sola. Cada `<img class="shots__img">` es una pantalla
   del carrusel y su `data-path` es la ruta que se escribe en la barra del navegador.
+- **Certificados nuevos**: sube el PDF y la insignia a `assets/certs/`, copia un
+  `<article class="card cert">` dentro de `.certs__grid` (ponlo el primero si es el más reciente),
+  añade sus claves `certN.*` en inglés en `js/i18n.js` y una fila en `term.certs` (ES y EN)
+  para que salga en el comando `certs` de la terminal. La rejilla se adapta sola.
 
 Respeta `prefers-reduced-motion` (sin animaciones para quien lo tenga activado)
 y el contenido sigue visible aunque el JavaScript falle.
