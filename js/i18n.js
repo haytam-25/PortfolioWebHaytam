@@ -265,7 +265,7 @@ window.I18N = {
     ],
     'term.skills': [
       ['languages', 'Java, JavaScript, Python, SQL, HTML5, CSS3'],
-      ['frameworks', 'Spring Boot, React.js, Vue.js, Tailwind CSS, Phaser.js'],
+      ['frameworks', 'Spring Boot, React.js, Vue.js, CSS, Phaser.js'],
       ['databases', 'PostgreSQL'],
       ['devops', 'Git, GitHub, Docker, Maven, Linux, Vercel, Railway, Nginx, Caddy'],
       ['other', 'REST APIs, AI integration (Google Gemini API)']
